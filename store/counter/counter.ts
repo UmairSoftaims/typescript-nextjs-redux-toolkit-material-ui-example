@@ -1,6 +1,6 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit"
+import { PayloadAction, createSlice } from "@reduxjs/toolkit"
 import { FeatureKey } from "../featureKey"
-import { RootState } from "../reducers"
+import { RootState } from "../configureStore"
 
 /**
  * Payload
@@ -28,27 +28,30 @@ const slice = createSlice({
   name: FeatureKey.COUNTER,
   initialState,
   reducers: {
-    increment: (state: CounterState): CounterState => {
-      return {
-        ...state,
-        count: state.count + 1,
-      }
+    increment: (state: CounterState): void => {
+      // return {
+      //   ...state,
+      //   count: state.count + 1,
+      // }
+      state.count += 1
     },
-    decrement: (state: CounterState): CounterState => {
-      return {
-        ...state,
-        count: state.count - 1,
-      }
+    decrement: (state: CounterState): void => {
+      // return {
+      //   ...state,
+      //   count: state.count - 1,
+      // }
+      state.count -= 1
     },
     calculate: (
       state: CounterState,
       action: PayloadAction<CounterPayload>
-    ): CounterState => {
+    ): void => {
       const { payload } = action
-      return {
-        ...state,
-        count: state.count + payload.inputNumber,
-      }
+      // return {
+      //   ...state,
+      //   count: state.count + payload.inputNumber,
+      // }
+      state.count += payload.inputNumber
     },
   },
 })

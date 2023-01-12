@@ -30,7 +30,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
 
         const newTodo: Todo = body
         const lastTodo = testTodos.slice(-1)[0]
-        newTodo.id = lastTodo.id + 1
+        newTodo.id = lastTodo.id || 0 + 1
         newTodo.createdAt = new Date()
         newTodo.updatedAt = new Date()
         testTodos.push(newTodo)

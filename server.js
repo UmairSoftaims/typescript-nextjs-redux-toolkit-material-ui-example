@@ -10,6 +10,7 @@ const port = dev ? 3000 : 8080
 app
   .prepare()
   .then(() => {
+    console.log("server 1234")
     const server = express()
     // support gzip
     server.use(compression())

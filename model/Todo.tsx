@@ -2,9 +2,9 @@
  * TODO model
  */
 export type Todo = {
-  id: number
+  id?: number
   name: string
   complete: boolean
-  createdAt: Date
-  updatedAt: Date
+  createdAt?: Date
+  updatedAt?: Date
 }

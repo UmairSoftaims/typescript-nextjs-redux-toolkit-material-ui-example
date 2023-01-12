@@ -1,5 +1,6 @@
 import { Typography } from "@material-ui/core"
-import { createStyles, makeStyles, Theme } from "@material-ui/core/styles"
+import { Theme, createStyles, makeStyles } from "@material-ui/core/styles"
+import { NextPage } from "next"
 import React from "react"
 import { AppContext } from "../components/AppContext"
 import { SpacingPaper } from "../components/atoms"
@@ -7,16 +8,16 @@ import { HeaderArticleContainer } from "../components/organisms"
 import { Layout } from "../components/templates"
 import { Page } from "../constants"
 import { changePage } from "../store/page"
-
-const useStyles = makeStyles((_: Theme) =>
-  createStyles({
-    root: {},
-  })
+const useStyles = makeStyles((_: Theme) => {
+  return createStyles({
+      root: {},
+    })
+  }
 )
 
 type Props = {}
 
-function Index(props: Props) {
+const Index: NextPage<Props> = (props: Props) => {
   const classes = useStyles(props)
   return (
     <Layout className={classes.root}>
@@ -35,7 +36,6 @@ function Index(props: Props) {
     </Layout>
   )
 }
-
 /**
  * @see https://nextjs.org/docs/api-reference/data-fetching/getInitialProps
  */
@@ -46,7 +46,6 @@ Index.getInitialProps = async (ctx: AppContext): Promise<Props> => {
       id: Page.TOP.id,
     })
   )
-  return {}
+  return store;
 }
-
-export default Index
+export default React.memo(Index)

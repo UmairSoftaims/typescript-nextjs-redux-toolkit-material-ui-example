@@ -1,7 +1,7 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit"
+import { PayloadAction, createSlice } from "@reduxjs/toolkit"
 import { Page } from "../../constants"
+import { RootState } from "../configureStore"
 import { FeatureKey } from "../featureKey"
-import { RootState } from "../reducers"
 
 /**
  * Payload
@@ -40,17 +40,18 @@ const slice = createSlice({
     changePage: (
       state: PageState,
       action: PayloadAction<PagePayload>
-    ): PageState => {
+    ): void => {
       const { id } = action.payload
       const selectedPage: Page = Page.of(id)
-      return {
-        ...state,
-        id: selectedPage.id,
-        pageTitle: selectedPage.pageTitle,
-        pageDescription: selectedPage.pageDescription,
-        title: selectedPage.title,
-        metaDescription: selectedPage.metaDescription,
-      }
+      // return {
+      //   ...state,
+      //   id: selectedPage.id,
+      //   pageTitle: selectedPage.pageTitle,
+      //   pageDescription: selectedPage.pageDescription,
+      //   title: selectedPage.title,
+      //   metaDescription: selectedPage.metaDescription,
+      // }
+      state = selectedPage
     },
   },
 })

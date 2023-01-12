@@ -37,7 +37,7 @@ type Props = {
 function Redux(props: Props) {
   const classes = useStyles(props)
   const { defaultInputNumber } = props
-  const [inputNumber, setInputNumber] = useState<number>(defaultInputNumber)
+  const [inputNumber, setInputNumber] = useState<number>(2)
   const { count, increment, decrement, calculate } = useCounter()
 
   /**
